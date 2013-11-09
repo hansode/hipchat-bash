@@ -9,6 +9,31 @@ Requirements
 + bash
 + curl
 
+Getting Started
+---------------
+
+```bash
+hipchat.sh rooms message \
+ --auth-token <auth-token> \
+ --room-id    <room-id>    \
+ --from       <from>       \
+ --message    <message>
+```
+
+Usage
+-----
+
+```bash
+hipchat.sh <namespace> <command>
+```
+
+Installation
+------------
+
+```bash
+git clone https://github.com/hansode/hipchat-bash
+```
+
 Links
 -----
 
