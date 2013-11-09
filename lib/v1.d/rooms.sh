@@ -38,6 +38,15 @@ task_history() {
   $(base_uri)/${namespace}/${cmd}
 }
 
+task_list() {
+  # https://www.hipchat.com/docs/api/method/rooms/list
+  call_api -X GET $(urlencode_data \
+    $(add_param auth_token   string required) \
+    $(add_param format       string optional) \
+  ) \
+  $(base_uri)/${namespace}/${cmd}
+}
+
 task_message() {
   # https://www.hipchat.com/docs/api/method/rooms/message
   call_api -X POST $(urlencode_data \
