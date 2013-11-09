@@ -1,6 +1,8 @@
 hipchat-bash
 ============
 
+[![Build Status](https://travis-ci.org/hansode/hipchat-bash.png)](https://travis-ci.org/hansode/hipchat-bash)
+
 A Bash wrapper for the [HipChat API](https://www.hipchat.com/docs/api).
 
 Requirements
