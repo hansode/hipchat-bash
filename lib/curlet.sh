@@ -13,6 +13,8 @@ function extract_args() {
     case "${arg}" in
     --*=*)
       key=${arg%%=*}; key=${key##--}; key=${key//-/_}
+      value="${value} ${arg##--*=}"
+      eval "${key}=\"${value}\""; value="\${${key}}"; value=$(eval echo ${value}); eval "${key}=\"${value## }\""
       ;;
     --*)
       key=${arg##--}; key=${key//-/_}
