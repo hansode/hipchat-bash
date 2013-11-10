@@ -43,17 +43,15 @@ function test_create() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     name=${name}
     privacy=${privacy}
     topic=${topic}
     guest_access=${guest_access}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_delete() {
@@ -69,14 +67,12 @@ function test_delete() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     room_id=${room_id}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_history() {
@@ -96,16 +92,11 @@ function test_history() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
-    room_id=${room_id}
-    date=${date}
-    timezone=${timezone}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format}\&room_id=${room_id}\&date=${date}\&timezone=${timezone})"
 }
 
 function test_list() {
@@ -119,13 +110,11 @@ function test_list() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_message() {
@@ -149,18 +138,16 @@ function test_message() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     room_id=${room_id}
     from=${from}
     message=${message}
     notify=${notify}
     color=${color}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_topic() {
@@ -180,16 +167,14 @@ function test_topic() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     room_id=${room_id}
     topic=${topic}
     from=${from}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_show() {
@@ -205,14 +190,11 @@ function test_show() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
-    room_id=${room_id}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format}\&room_id=${room_id})"
 }
 
 ## shunit2

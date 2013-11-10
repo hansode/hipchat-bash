@@ -49,7 +49,6 @@ function test_create() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     email=${email}
     name=${name}
     mention_name=${mention_name}
@@ -57,12 +56,11 @@ function test_create() {
     is_group_admin=${is_group_admin}
     password=${password}
     timezone=${timezone}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_delete() {
@@ -78,14 +76,12 @@ function test_delete() {
     --format=${format}
    "
   local params="
-    auth_token=${auth_token}
     user_id=${user_id}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_list() {
@@ -101,14 +97,11 @@ function test_list() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
-    include_deleted=${include_deleted}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format}\&include_deleted=${include_deleted})"
 }
 
 function test_undelete() {
@@ -124,14 +117,12 @@ function test_undelete() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     user_id=${user_id}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 function test_update() {
@@ -161,7 +152,6 @@ function test_update() {
     --format=${format}
   "
   local params="
-    auth_token=${auth_token}
     user_id=${user_id}
     email=${email}
     name=${name}
@@ -170,12 +160,11 @@ function test_update() {
     is_group_admin=${is_group_admin}
     password=${password}
     timezone=${timezone}
-    format=${format}
   "
 
   assertEquals \
    "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
-   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd})"
+   "$(curl -X POST $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format})"
 }
 
 ## shunit2
