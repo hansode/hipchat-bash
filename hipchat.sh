@@ -7,6 +7,7 @@
 #  HipChat API Client
 #
 set -e
+set -o pipefail
 
 # include files
 
