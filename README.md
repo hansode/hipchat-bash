@@ -8,8 +8,8 @@ A Bash wrapper for the [HipChat API](https://www.hipchat.com/docs/api).
 Requirements
 ------------
 
-+ bash
-+ curl
++ [bash](http://www.gnu.org/software/bash/bash.html)
++ [curl](http://curl.haxx.se/)
 
 Getting Started
 ---------------
