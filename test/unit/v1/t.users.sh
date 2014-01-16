@@ -42,6 +42,12 @@ function test_list() {
   assertEquals 0 $?
 }
 
+function test_show() {
+  extract_args ${namespace} show
+  run_cmd ${COMMAND_ARGS}
+  assertEquals 0 $?
+}
+
 function test_undelete() {
   extract_args ${namespace} undelete
   run_cmd ${COMMAND_ARGS}

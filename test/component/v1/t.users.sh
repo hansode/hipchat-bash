@@ -104,6 +104,26 @@ function test_list() {
    "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format}\&include_deleted=${include_deleted})"
 }
 
+function test_show() {
+  local cmd=show
+
+  local auth_token=abcdefghijklmnopqrstuvwxyz
+  local user_id=1234
+  local format=json
+
+  local opts="
+    --auth_token=${auth_token}
+    --user_id=${user_id}
+    --format=${format}
+  "
+  local params="
+  "
+
+  assertEquals \
+   "$(cli_wrapper ${namespace} ${cmd} ${opts})" \
+   "$(curl -X GET $(urlencode_data ${params}) $(base_uri)/${namespace}/${cmd}?auth_token=${auth_token}\&format=${format}\&user_id=${user_id})"
+}
+
 function test_undelete() {
   local cmd=undelete
 
