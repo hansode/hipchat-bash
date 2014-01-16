@@ -45,11 +45,11 @@ task_list() {
 task_show() {
   # https://www.hipchat.com/docs/api/method/users/show
   call_api -X GET $(urlencode_data \
-    $(add_param user_id         string required) \
   ) \
   $(base_uri)/${namespace}/${cmd}?$(query_string \
     $(add_param auth_token      string required) \
     $(add_param format          string optional) \
+    $(add_param user_id         string required) \
   )
 }
 
